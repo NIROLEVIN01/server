@@ -9,22 +9,17 @@ const verifyTokenMiddleware = require('../middlewares/auth')
 const ParentUser = require('../models/parentUser')
 // const ChildUser = require('../models/childUser')
 
-mongoose
-  .connect(process.env.DB, { useNewUrlParser: true })
-  .then(() => console.log(`Database connected successfully`))
-  .catch((err) => console.log(err));
-mongoose.Promise = global.Promise;
-
 router.post('/users/signup', function(req, res, next) {
 
     var body = req.body;
     var hash = bcrypt.hashSync((body['password']), 10);
 
-    console.log((body['email'])?.trim())
-    console.log((body['phoneNumber'])?.trim())
     console.log((body['firstName'])?.trim())
     console.log((body['lastName'])?.trim())
+    console.log((body['email'])?.trim())
     console.log((body['password'])?.trim())
+    console.log((body['confirmPassword'])?.trim())
+    console.log((body['phoneNumber'])?.trim())
 
     var user = new ParentUser({
         email: (body['email']).trim(),

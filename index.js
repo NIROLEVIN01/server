@@ -34,7 +34,7 @@ app.use((err, req, res, next) => {
 //In all the future routes, this helps to know if the request is authenticated or not.
 app.use(function(req, res, next) {
   // check header or url parameters or post parameters for token
-  
+
   var token = req.headers['Authorization'];
 
   if (!token) return next();
